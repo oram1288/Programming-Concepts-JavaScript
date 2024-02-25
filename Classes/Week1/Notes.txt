@@ -1,0 +1,165 @@
+HTML, CSS, and JavaScript!
+
+
+Websites:
+    Static Websites (server doesnt do any processing just returns same info to user)
+    Dynamic Websites... (will show different content to different users, ex. Facebook)
+
+
+JavaScript!
+    1.Primarily JS was for "Client side" web development...{real purpose at the time of birth}
+    2.JS started to be used for "Server side" web development...
+    3.JS is now used for desktop publishing or console applications...
+
+How to run JavaScript?
+    By using terminal...3.....
+    By using browser.... 
+    By using REPL... Read Evaluate Process Loop... 
+        i) terminal   (just type "node", and ".exit" to exit)
+        ii) browser   (console.log, console.warn, console.error, simple math)
+
+Variables:
+
+var, let, const
+//// put in script.js to test 
+
+// var x;
+// var age;
+// var fName;
+// var height
+
+// let y;
+// let age;
+
+// const z;
+// const age;
+
+JavaScript is case sensitive...
+
+var name;
+var Name;
+
+Naming Conventions:
+
+var firstName; // camelCase
+var dateOfBirth;
+
+var first_name; // snake_case
+var date_of_birth;
+
+Comments:
+// single line Comments
+
+/* this is a 
+multiline comments */
+
+Block statements:
+{    
+
+}
+
+if (x > 1) {
+  console.log("one printed");
+}
+
+{
+    
+}
+
+Functions: are one of the primary building blcoks of JavaScript..
+A function defines a subprogram that can be called by the other parts of your code ... 
+ abc()
+ xyz()
+
+
+ + is a a concatenation operator in JS.
+ Example:   var age:
+            age = 20;
+
+            console.log("the age is" + age);
+            or
+            console.log(10 + age);    // can add brakets around 10 as well to make it a string
+
+ Data Types:
+
+    Number: whole number, fraction..
+    string: " ", ' ' , 3. ??
+    boolean: true / false
+
+    object: Array, Date, Function 
+    null : a value that means "this is intenionally nothing" vs undefined..
+    undefined: a special value that indicates a value has never been defined.....
+
+Use "(typeof age)" to find out what tyoe the function is
+
+
+Declaration:                  Type :       Value
+var s1="some text";           string        "some text"
+var s2 ='some text';          string        "some text"
+var s3 = '142';               string        "172"
+var s4 = '152' + 5;           string        1525 (concatenation vs. addition)
+var n1 = 142 ;                Number        142
+var n2 = 122.43;              Number        122.43
+var b1 = true;                boolean       true
+var b2 = false;               boolean       false
+var c;                        undefined..   undefined
+var d = null                  object        null
+
+
+// console.log("Hello everyone from JavaScript!!!");
+
+// var firstName;
+
+// firstName = 20;
+// firstName = "Alan";
+
+// var age;
+// age = null;
+// console.log(typeof age);
+
+
+May 31, 2022:
+
+Type conversion:
+
+    Some functions are used to do type conversion...
+
+
+Operators:
+
++    addition of numbers   4+5 // 9
++    concatenation of strings  "hello" + "world" // hello world
+-
+*
+/
+%   Modulo      4%2 = 0.. 5%2 = 1;
+++ increment operator - pre/ post 
+-- decrement operator - pre/ post
+=    Assignment operator   x=7;
+
++=  Addition assignment operator ...
+-=  SUbtraction assignment operator...
+*=  multiplication assignment...
+
+&&  Logical and
+||  Logical OR
+
+!  NOT 
+
+== Equal...to compare two values we use == opreator.... coercion.. implicitly converts the type and compares...
+=== Strict Equal...
+
+> 
+<
+>= 
+<=
+
+typeof 
+
+Ternary operator:   ? :
+
+for (initialization ; condition; inc/dec)
+{
+
+
+}

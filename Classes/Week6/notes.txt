@@ -1,0 +1,104 @@
+Feb 5th, 2024
+
+Objects and Object Oriented Programming(OOP):
+ We work on Objects!
+ Objects are a collection of "data" and "operations".
+ 
+String Objects and its functions:
+Arrays:
+
+let arr1=[1,2,3,4];
+let arr2 = new Array(1,2,3,4);
+
+Destructuring assignment:
+Ex. 1 
+    // let s = "Today is very good weather";
+    // let [w1, w2, w3, w4, w5] = s.split(" ");
+
+Ex. 2
+    let[username,domain]="johnsmith@gmail.com".split("@");
+    --> [johnsmith,keyin.com]
+
+    let emailAddress = "johnsmith@keyin.com";
+    let [username] = emailAddress.split("@"); 
+    --> johnsmith  * ignores the second half 
+
+    let emailAddress = "johnsmith@keyin.com";
+    let [, domain] = emailAddress.split("@"); 
+    --> keyin.com  * ignores the first half 
+
+Array properties and Methods:
+    length --> the number of words or numbers, ex. [1,2,3] = 3
+    push() --> adds something to the end of an array
+    unshift() --> adds something to the front of an array
+
+    pop() --> removes something to the end of an array
+    shift() --> removes something to the front of an array
+
+    arr.concat([1,2,3],6);
+    arr.includes(3);
+
+   * arr.join("").... converts an array to a String
+   * "hello".split(e).. converts a string to an array...
+
+February 6,2024:
+
+Properties and methods:
+
+    var name="keyin";
+    var name2=new String("keyin College");
+
+    console.log(name.length);
+    console.log(name.toUpperCase());
+
+Methods to traverse elmements in an array:
+
+    1. for loop
+    2. forEach( )
+    3. map()
+    4.find() .. finds and returns an element from the array which matches a condition you define ...
+    5. filter( )... creates and returns a new array containing only those elements that matcha a condition you define in your function
+
+Feb 7,2024
+
+Regular Expressions:
+
+ These are patterns that we define to manipulate strings.
+ Manipulation means finding, replacing,converting etc etc of strings..
+
+ colou?r
+
+ color --correctcc
+ colour ---correct
+
+ let re=/colou?r/;
+ let re2 = new RegExp('colou?r');
+
+ Period
+ . means any letter in RE..
+ [] represents a set of letters, one of which shoud be ther...
+ ^ when used in [] will reverse...
+ \d Any number (digit)
+ \D NOT THE DIGIT
+ \w [a-zA-Z0-9_] a word .. consists of all these..
+ \W Not a word..
+ \s is one space..
+ ? refers to an optional character...
+ * .. 0 or more ...
+ + .. 1 or more 
+ { } in which we can mention the exact number of somethig.
+ ( )paranthesis in RE represent "Capture group".. Details soon...
+ ^ represents the start of the Regular expression 
+ $ represents the end of it...
+
+ Our phone number regular expression: /(\(?\d{3}\)?)?[-\s]?\d{3}[-\s]*\d{4}/
+
+ .test() tests the given RE with the passed string and returns true or false...
+ .match() matches a given string with the RE and returns an array of all capture groups
+ .split(/\s*,\s*/)
+ .replace(/,\s+/," ");
+
+* RegEx Pal for regular expressions testing
+
+(The practice.js is moved from week 6 to week 7.)
+

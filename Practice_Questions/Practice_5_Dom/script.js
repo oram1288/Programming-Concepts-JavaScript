@@ -20,7 +20,7 @@ window.addEventListener("DOMContentLoaded", function () {
       var li = document.createElement("li");
       li.innerText = fruits[i];
       document.querySelector("#model").appendChild(li);
-    }
+    };
   });
   
   /**********************************************************************************************************

@@ -7,3 +7,7 @@ Two frameworks for fullstack development:
     
 File structure:
     .gitignore:
+
+
+    npm install
+    npm start

@@ -1,5 +1,7 @@
 // import logo from "./logo.svg";
 import "./App.css";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   let firstName = "Cody";
@@ -10,6 +12,14 @@ function App() {
       <p>this is going to be a jsx thing...</p>
       <p>Welcome {firstName}</p>
       <p>Welcome {2 + 2}</p>
+      <Header
+        title="Calculator App"
+        text="This is going to be a calculator app used for calculations"
+      />
+      <p>Welcome {firstName}</p>
+      <Header title="To-Do App" text="To-Do App for different purpose" />
+      <p>Welcome {firstName}</p>
+      <Footer />
     </div>
   );
 }

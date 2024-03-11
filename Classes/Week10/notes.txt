@@ -39,3 +39,16 @@ We use JSX to show the output on our components!
 JSX files:
     "rfce" to automatically have a function!
     "rafce" to automatically have a arrow function!
+
+JSX must have ONE continer of values...
+
+React Fragment: <>  </>
+    - used to wrap the contents of jsx but they dont produce their own code!...
+
+How to make new components and use them?
+
+Props in React!
+    props(properties) are like parameters to the functions...
+    we pass props to Components to show different values with difrent calls.
+
+Now let's go and work with Task Tracker!

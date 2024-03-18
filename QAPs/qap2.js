@@ -162,20 +162,18 @@ console.log(
  ******************************************************************************/
 
 function parseDateString(value) {
-  if (typeof value !== "string" || value.length !== 10) {
-    throw new Error("Wrong Format.");
+  if (!(value && /^\d{4}-\d{2}-\d{2}$/.test(value))) {
+    throw new Error("Wrong Format");
   }
-  let year = parseInt(value.slice(0, 4));
-  let month = parseInt(value.slice(5, 7));
-  let day = parseInt(value.slice(8, 10));
 
-  let parseDate = new Date();
+  let [year, month, date] = value.split("-");
 
-  parseDate.setFullYear(year);
-  parseDate.setMonth(month);
-  parseDate.setDate(day);
+  let newDate = new Date();
+  newDate.setFullYear(+year);
+  newDate.setMonth(+month - 1);
+  newDate.setDate(+date);
 
-  return parseDate;
+  return newDate;
 }
 
 console.log(parseDateString("2021-10-12"));
@@ -209,9 +207,35 @@ console.log(parseDateString("2021-10-12"));
  *
  ******************************************************************************/
 
+// function toDateString(value) {
+//   try {
+//     let year = value.getFullYear();
+//     let month = `${value.getMonth() + 1}`.padStart(2, "0");
+//     let day = `${value.getDay()}`.padStart(2, "0");
+//     return `${year}-${month}-${day}`;
+//   } catch (err) {
+//     throw new Error("Invalid date");
+//   }
+// }
+// newDate = new Date(2024, 1, 23);
+// console.log(toDateString(newDate));
+// console.log(toDateString(parseDateString("2021-01-29")));
+
 function toDateString(value) {
   // Replace this comment with your code...
+  try {
+    let year = value.getFullYear();
+    let month = `${value.getMonth() + 1}`.padStart(2, "0");
+    let day = `${value.getDate()}`.padStart(2, "0");
+    return `${year}-${month}-${day}`;
+  } catch (err) {
+    throw new Error("invalid date");
+  }
 }
+
+newDate = new Date(2021, 2, 23);
+console.log(toDateString(newDate));
+console.log(toDateString(parseDateString("2021-01-29")));
 
 /*******************************************************************************
  * Problem 5: parse a geographic coordinate
@@ -238,8 +262,28 @@ function toDateString(value) {
  ******************************************************************************/
 
 function normalizeCoord(value) {
-  // Replace this comment with your code...
+  // Regular expression to match latitude and longitude values
+  value = value.match(/[-+]?[0-9]*\.?[0-9]+/g);
+
+  // Extract latitude and longitude values
+  let longitude = parseFloat(value[0]);
+  let latitude = parseFloat(value[1]);
+
+  // Check if latitude and longitude values are within valid range
+  if (
+    longitude >= -180 ||
+    longitude <= 180 ||
+    latitude >= -90 ||
+    latitude <= 90
+  ) {
+    return `(${latitude}, ${longitude})`;
+  } else {
+    return "Invalid coordinate";
+  }
 }
+
+console.log(normalizeCoord("42.9755,-77.4369"));
+console.log(normalizeCoord("[-77.4369, 42.9755]"));
 
 /*******************************************************************************
      * Problem 6: format any number of coordinates as a list in a string
@@ -268,8 +312,28 @@ function normalizeCoord(value) {
      ******************************************************************************/
 
 function formatCoords(...values) {
-  // Replace this comment with your code...
+  let trimmedCord = values.trim();
+
+  let cord = `"((${trimmedCord}"`;
+
+  cord += `${parseInt(values)}"`;
+
+  cord += `, ${parseInt(values)}"`;
+
+  cord += `), ( ${parseInt(values)}"`;
+
+  cord += `, ${parseInt(values)}"`;
+
+  cord += `))"`;
+
+  return cord;
 }
+
+console.log(
+  normalizeCoord(
+    formatCoords("42.9755,-77.4369", "[-62.1234, 42.9755]", "300,-9000")
+  )
+);
 
 /*******************************************************************************
      * Problem 7: determine MIME type from filename extension

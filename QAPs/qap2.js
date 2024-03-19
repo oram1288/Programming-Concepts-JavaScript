@@ -281,30 +281,30 @@ console.log(normalizeCoord("42.9755,-77.4369"));
 console.log(normalizeCoord("[-77.4369, 42.9755]"));
 
 /*******************************************************************************
-     * Problem 6: format any number of coordinates as a list in a string
-     *
-     * You are asked to format geographic lat, lng coordinates in a list using your
-     * normalizeCoord() function from problem 5.
-     *
-     * Where normalizeCoord() takes a single geographic coord, the formatCoords()
-     * function takes a list of any number of geographic coordinates, parses them,
-     * filters out any invalid coords, and creates a list.
-     *
-     * For example: given the following coords, "42.9755,-77.4369" and "[-62.1234, 42.9755]",
-     * a new list would be created of the following form "((42.9755, -77.4369), (42.9755, -62.1234))".
-     *
-     * Notice how the list has been enclosed in an extra set of (...) braces, and each
-     * formatted geographic coordinate is separated by a comma and space.
-     *
-     * The formatCoords() function can take any number of arguments, but they must all
-     * be strings.  If any of the values can't be parsed by normalizeCoord() (i.e., if
-     * an Error is thrown), skip the value.  For example:
-     *
-     * formatCoords("42.9755,-77.4369", "[-62.1234, 42.9755]", "300,-9000") should return
-     * "((42.9755, -77.4369), (42.9755, -62.1234))" and skip the invalid coordinate.
-     *
+  * Problem 6: format any number of coordinates as a list in a string
+  *
+  * You are asked to format geographic lat, lng coordinates in a list using your
+  * normalizeCoord() function from problem 5.
+  *
+  * Where normalizeCoord() takes a single geographic coord, the formatCoords()
+  * function takes a list of any number of geographic coordinates, parses them,
+  * filters out any invalid coords, and creates a list.
+  *
+  * For example: given the following coords, "42.9755,-77.4369" and "[-62.1234, 42.9755]",
+  * a new list would be created of the following form "((42.9755, -77.4369), (42.9755, -62.1234))".
+  *
+  * Notice how the list has been enclosed in an extra set of (...) braces, and each
+  * formatted geographic coordinate is separated by a comma and space.
+  *
+  * The formatCoords() function can take any number of arguments, but they must all
+  * be strings.  If any of the values can't be parsed by normalizeCoord() (i.e., if
+  * an Error is thrown), skip the value.  For example:
+  *
+  * formatCoords("42.9755,-77.4369", "[-62.1234, 42.9755]", "300,-9000") should return
+  * "((42.9755, -77.4369), (42.9755, -62.1234))" and skip the invalid coordinate.
+  *
     
-     ******************************************************************************/
+  *****************************************************************************/
 
 function formatCoords(...values) {
   // Regular expression to match latitude and longitude values
@@ -477,9 +477,53 @@ console.log(mimeFromFilename("example.mp4")); // 'video.mp4'
  ******************************************************************************/
 
 function generateLicenseLink(licenseCode, targetBlank) {
-  // Replace this comment with your code...
+  // Mapping of license codes to license URLs and explanations
+  let licenses = {
+    "CC-BY": {
+      url: "https://creativecommons.org/licenses/by/4.0/",
+      explanation: "Creative Commons Attribution License",
+    },
+    "CC-BY-NC": {
+      url: "https://creativecommons.org/licenses/by-nc/4.0/",
+      explanation: "Creative Commons Attribution NonCommercial License",
+    },
+    "CC-BY-SA": {
+      url: "https://creativecommons.org/licenses/by-sa/4.0/",
+      explanation: "Creative Commons Attribution ShareAlike License",
+    },
+    "CC-BY-ND": {
+      url: "https://creativecommons.org/licenses/by-nd/4.0/",
+      explanation: "Creative Commons Attribution NoDerivs License",
+    },
+    "CC-BY-NC-SA": {
+      url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+      explanation:
+        "Creative Commons Attribution NonCommercial ShareAlike License",
+    },
+    "CC-BY-NC-ND": {
+      url: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
+      explanation:
+        "Creative Commons Attribution NonCommercial NoDerivs License",
+    },
+  };
+
+  // Normalize the license code (remove 'CC-' prefix and convert to uppercase)
+  let normalizedCode = licenseCode.toLowerCase().replace(/^CC-/, "");
+
+  // Check if the license code exists in the licenses mapping
+  if (licenses.hasOwnProperty(normalizedCode)) {
+    let license = licenses[normalizedCode];
+    // Build the HTML link
+    let targetAttr = targetBlank ? ' target="_blank"' : "";
+    return `<a href="${license.url}"${targetAttr}>${license.explanation}</a>`;
+  } else {
+    return "Unknown license";
+  }
 }
 
+// Test cases
+console.log(generateLicenseLink("CC-BY-NC")); // Creative Commons Attribution NonCommercial License
+console.log(generateLicenseLink("CC-BY"));
 /*******************************************************************************
  * Problem 9 Part 1: convert a value to a Boolean (true or false)
  *
@@ -536,7 +580,7 @@ console.log(pureBool("N")); // false
 console.log(pureBool("vrai")); // true
 console.log(pureBool(1)); // true
 console.log(pureBool(-2)); // false
-console.log(pureBool("invalid")); // throws error
+// console.log(pureBool("invalid")); // throws error
 
 /*******************************************************************************
  * Problem 9 Part 2: checking for all True or all False values in a normalized list

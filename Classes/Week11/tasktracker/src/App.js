@@ -28,13 +28,37 @@ function App() {
     },
   ]);
 
-  const onClick = (e) => {
+  let deleteTask = (id) => {
+    // console.log("Delete", id);
+
+    setTasks(tasks.filter((task) => task.id !== id)); // return all task BUT the one with the task.id
+  };
+
+  // toggle reminder
+
+  let toggleReminder = (id) => {
+    // console.log(id);
+
+    setTasks(
+      tasks.map((task) =>
+        task.id === id ? { ...task, reminder: !task.reminder } : task
+      )
+    );
+  };
+
+  let onClick = (e) => {
     console.log("click from App component");
   };
   return (
     <div className="container">
       <Header title="Task Tracker" onClick={onClick} />
-      <Tasks tasks={tasks} />
+
+      {tasks.length > 0 ? (
+        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
+      ) : (
+        "No taks to show"
+      )}
+
       {/* <Temp1 /> */}
       {/* <Temp2 /> */}
       {/* <Temp3 /> */}

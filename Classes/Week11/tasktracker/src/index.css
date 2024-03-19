@@ -52,3 +52,12 @@ header {
   border-radius: 5px;
   border: 1px solid black;
 }
+
+.task h3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.task.reminder {
+  border-left: 6px solid green;
+}

@@ -207,22 +207,7 @@ console.log(parseDateString("2021-10-12"));
  *
  ******************************************************************************/
 
-// function toDateString(value) {
-//   try {
-//     let year = value.getFullYear();
-//     let month = `${value.getMonth() + 1}`.padStart(2, "0");
-//     let day = `${value.getDay()}`.padStart(2, "0");
-//     return `${year}-${month}-${day}`;
-//   } catch (err) {
-//     throw new Error("Invalid date");
-//   }
-// }
-// newDate = new Date(2024, 1, 23);
-// console.log(toDateString(newDate));
-// console.log(toDateString(parseDateString("2021-01-29")));
-
 function toDateString(value) {
-  // Replace this comment with your code...
   try {
     let year = value.getFullYear();
     let month = `${value.getMonth() + 1}`.padStart(2, "0");
@@ -312,21 +297,25 @@ console.log(normalizeCoord("[-77.4369, 42.9755]"));
      ******************************************************************************/
 
 function formatCoords(...values) {
-  let trimmedCord = values.trim();
+  values = values.match(/[-+]?[0-9]*\.?[0-9]+/g);
 
-  let cord = `"((${trimmedCord}"`;
+  let latitude = parseFloat(values[0]);
+  let longitude = parseFloat(values[1]);
+  let validValues = values.reduce(latitude, longitude);
 
-  cord += `${parseInt(values)}"`;
-
-  cord += `, ${parseInt(values)}"`;
-
-  cord += `), ( ${parseInt(values)}"`;
-
-  cord += `, ${parseInt(values)}"`;
-
-  cord += `))"`;
-
-  return cord;
+  if (
+    longitude >= -180 ||
+    longitude <= 180 ||
+    latitude >= -90 ||
+    latitude <= 90
+  ) {
+    let formattedList = validValues
+      .map((values) => `(${values.latitude}, ${values.longitude})`)
+      .join(", ");
+    return `(${formattedList})`;
+  } else {
+    throw new Error("Invalid coordinate");
+  }
 }
 
 console.log(
@@ -388,9 +377,13 @@ console.log(
      ******************************************************************************/
 
 function mimeFromFilename(filename) {
-  // Replace this comment with your code...
   // NOTE: Use a switch statement in your solution.
+  let mimeType = `${filename.subtype} --> ${filename.subtype}`;
+
+  return mimeType;
 }
+
+console.log(mimeFromFilename(".css", "text/css"));
 
 /*******************************************************************************
  * Problem 8, Part 1: generate license text and link from license code.
@@ -465,8 +458,40 @@ function generateLicenseLink(licenseCode, targetBlank) {
  ******************************************************************************/
 
 function pureBool(value) {
-  // Replace this comment with your code...
+  // If the value is already a Boolean, return it
+  if (typeof value === "boolean") {
+    return value;
+  }
+
+  // Convert strings to lowercase for case-insensitive comparison
+  let stringValue = String(value);
+
+  // Define arrays of true and false type values
+  let trueValues = ["YES", "oui", "o", "T", "true", "vrai", "v", "1"];
+  let falseValues = ["no", "non", "N", "f", "false", "FAUX", "-2"];
+
+  // Check if the value is in the trueValues array
+  if (trueValues.includes(stringValue)) {
+    return true;
+  }
+  // Check if the value is in the falseValues array
+  else if (falseValues.includes(stringValue)) {
+    return false;
+  }
+  // Throw an error for invalid values
+  else {
+    throw new Error("Invalid Value.");
+  }
 }
+
+console.log(pureBool(true)); // true
+console.log(pureBool(false)); // false
+console.log(pureBool("YES")); // true
+console.log(pureBool("N")); // false
+console.log(pureBool("vrai")); // true
+console.log(pureBool(1)); // true
+console.log(pureBool(-2)); // false
+console.log(pureBool("invalid")); // throws error
 
 /*******************************************************************************
  * Problem 9 Part 2: checking for all True or all False values in a normalized list

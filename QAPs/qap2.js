@@ -248,22 +248,32 @@ console.log(toDateString(parseDateString("2021-01-29")));
 
 function normalizeCoord(value) {
   // Regular expression to match latitude and longitude values
-  value = value.match(/[-+]?[0-9]*\.?[0-9]+/g);
+  let matches = value.match(/\[?(-?\d+\.\d+),\s*(-?\d+\.\d+)\]?/);
 
-  // Extract latitude and longitude values
-  let longitude = parseFloat(value[0]);
-  let latitude = parseFloat(value[1]);
+  let longitude;
+  let latitude;
 
-  // Check if latitude and longitude values are within valid range
-  if (
-    longitude >= -180 ||
-    longitude <= 180 ||
-    latitude >= -90 ||
-    latitude <= 90
-  ) {
-    return `(${latitude}, ${longitude})`;
-  } else {
-    return "Invalid coordinate";
+  // Check if matches were found. If it starts with a [, that means longitude is first and it switches them around.
+  if (matches) {
+    if (value.startsWith("[")) {
+      latitude = parseFloat(matches[2]);
+      longitude = parseFloat(matches[1]);
+    } else {
+      latitude = parseFloat(matches[1]);
+      longitude = parseFloat(matches[2]);
+    }
+
+    // Check if latitude and longitude values are within valid range
+    if (
+      longitude >= -180 ||
+      longitude <= 180 ||
+      latitude >= -90 ||
+      latitude <= 90
+    ) {
+      return `(${latitude}, ${longitude})`;
+    } else {
+      return "Invalid coordinate";
+    }
   }
 }
 
@@ -297,24 +307,33 @@ console.log(normalizeCoord("[-77.4369, 42.9755]"));
      ******************************************************************************/
 
 function formatCoords(...values) {
-  values = values.match(/[-+]?[0-9]*\.?[0-9]+/g);
+  // Regular expression to match latitude and longitude values
+  let matches = values.match(/\[?(-?\d+\.\d+),\s*(-?\d+\.\d+)\]?/);
 
-  let latitude = parseFloat(values[0]);
-  let longitude = parseFloat(values[1]);
-  let validValues = values.reduce(latitude, longitude);
+  let longitude;
+  let latitude;
 
-  if (
-    longitude >= -180 ||
-    longitude <= 180 ||
-    latitude >= -90 ||
-    latitude <= 90
-  ) {
-    let formattedList = validValues
-      .map((values) => `(${values.latitude}, ${values.longitude})`)
-      .join(", ");
-    return `(${formattedList})`;
-  } else {
-    throw new Error("Invalid coordinate");
+  // Check if matches were found. If it starts with a [, that means longitude is first and it switches them around.
+  if (matches) {
+    if (values.startsWith("[")) {
+      latitude = parseFloat(matches[2]);
+      longitude = parseFloat(matches[1]);
+    } else {
+      latitude = parseFloat(matches[1]);
+      longitude = parseFloat(matches[2]);
+    }
+
+    // Check if latitude and longitude values are within valid range
+    if (
+      longitude >= -180 ||
+      longitude <= 180 ||
+      latitude >= -90 ||
+      latitude <= 90
+    ) {
+      return `(${latitude}, ${longitude})`;
+    } else {
+      throw new Error("Invalid coordinate");
+    }
   }
 }
 
@@ -378,12 +397,38 @@ console.log(
 
 function mimeFromFilename(filename) {
   // NOTE: Use a switch statement in your solution.
-  let mimeType = `${filename.subtype} --> ${filename.subtype}`;
+  let mimeType = {
+    txt: "text/plain",
+    html: "text/html",
+    css: "text/css",
+    js: "text/javascript",
+    jpg: "image/jpeg",
+    jpeg: "image/jpeg",
+    png: "image/png",
+    gif: "image/gif",
+    bmp: "image/bmp",
+    svg: "image/svg+xml",
+    mp4: "video/mp4",
+    mpeg: "video/mpeg",
+    pdf: "application/pdf",
+    doc: "application/msword",
+    json: "application/json",
+    xml: "application/xml",
+    zip: "application/zip",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    // Add more mappings as needed
+  };
 
-  return mimeType;
+  let extension = filename.split(".");
+
+  return mimeType[extension] || "application/octet-stream";
 }
 
-console.log(mimeFromFilename(".css", "text/css"));
+console.log(mimeFromFilename("example.css")); // 'text/css
+console.log(mimeFromFilename("example.txt")); // 'text/plain'
+console.log(mimeFromFilename("example.html")); // 'text/html'
+console.log(mimeFromFilename("example.jpg")); // 'image/jpeg'
+console.log(mimeFromFilename("example.mp4")); // 'video.mp4'
 
 /*******************************************************************************
  * Problem 8, Part 1: generate license text and link from license code.
@@ -507,17 +552,48 @@ console.log(pureBool("invalid")); // throws error
  * throws on invalid data.
  ******************************************************************************/
 
-function every() {
-  // Replace this comment with your code...
+function every(x, y, z) {
+  try {
+    for (let list of (x, y, z)) {
+      if (!pureBool(list)) {
+        return false;
+      }
+    }
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
 
-function any() {
-  // Replace this comment with your code...
+function any(x, y, z) {
+  try {
+    for (let list of (x, y, z)) {
+      if (pureBool(list)) {
+        return true;
+      }
+    }
+    return false;
+  } catch (error) {
+    return false;
+  }
 }
 
 function none() {
-  // Replace this comment with your code...
+  try {
+    for (let list of (x, y, z)) {
+      if (pureBool(list)) {
+        return false;
+      }
+    }
+    return true;
+  } catch (error) {
+    return false;
+  }
 }
+
+console.log(every("Y", "yes", 1));
+console.log(any("Y", "no", 1));
+console.log(none("Y", "invalid", 1));
 
 /*******************************************************************************
  * Problem 10 - build a URL

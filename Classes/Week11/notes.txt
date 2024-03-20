@@ -21,3 +21,24 @@ HOOKS!
     1. useState() Hook:
         Keeps track of the state of the component(the values carried forward 
         by the variables in the component)
+
+setPerson({name:"Bob"}) ??? 
+
+ {/* <Temp1 /> */}
+      {/* <Temp2 /> */}
+      {/* <Temp3 /> */}
+
+To make tasks state variable GLOBAL, we need to put that into our App component which 
+is always the home/first component to run...Ultimately passed to the concerned components when needed...
+
+Apply functions/operations on our application:
+    1. DeleteTask()
+
+        setTasks([2,3]);
+
+         setTasks(tasks.filter((task) => task.id !== id)); 
+
+         tasks=[{2,}{3,}]
+
+         as we use "className" in react instead of "class"[in HTML]
+         same way, we use "htmlFor" in react instead of "for" with labels[in HTML]

@@ -39,7 +39,9 @@ function snake(value) {
   return value;
 }
 
+console.log(snake(" A bC  "));
 console.log(snake(" A..  B   C "));
+console.log();
 
 /*******************************************************************************
  * Problem 2: create an HTML <video> element for the given url.
@@ -117,6 +119,7 @@ console.log(
     false
   )
 );
+console.log();
 
 /*******************************************************************************
  * Problem 3: extract Date from date string
@@ -177,6 +180,7 @@ function parseDateString(value) {
 }
 
 console.log(parseDateString("2021-10-12"));
+console.log();
 
 /*******************************************************************************
  * Problem 4: convert Date to date string with specified format.
@@ -221,6 +225,7 @@ function toDateString(value) {
 newDate = new Date(2021, 2, 23);
 console.log(toDateString(newDate));
 console.log(toDateString(parseDateString("2021-01-29")));
+console.log();
 
 /*******************************************************************************
  * Problem 5: parse a geographic coordinate
@@ -248,7 +253,7 @@ console.log(toDateString(parseDateString("2021-01-29")));
 
 function normalizeCoord(value) {
   // Regular expression to match latitude and longitude values
-  let matches = value.match(/\[?(-?\d+\.\d+),\s*(-?\d+\.\d+)\]?/);
+  let matches = value.match(/\[?(-?\d+\.?\d+),\s*(-?\d+\.?\d+)\]?/);
 
   let longitude;
   let latitude;
@@ -264,21 +269,21 @@ function normalizeCoord(value) {
     }
 
     // Check if latitude and longitude values are within valid range
-    if (
-      longitude >= -180 ||
-      longitude <= 180 ||
-      latitude >= -90 ||
-      latitude <= 90
-    ) {
-      return `(${latitude}, ${longitude})`;
-    } else {
-      return "Invalid coordinate";
+    if (latitude < -90 || latitude > 90) {
+      throw new Error("invalid latitude");
     }
+
+    if (longitude < -180 || longitude > 180) {
+      throw new Error("invalid longitude");
+    }
+
+    return `(${latitude}, ${longitude})`;
   }
 }
 
 console.log(normalizeCoord("42.9755,-77.4369"));
 console.log(normalizeCoord("[-77.4369, 42.9755]"));
+console.log();
 
 /*******************************************************************************
   * Problem 6: format any number of coordinates as a list in a string
@@ -307,41 +312,22 @@ console.log(normalizeCoord("[-77.4369, 42.9755]"));
   *****************************************************************************/
 
 function formatCoords(...values) {
-  // Regular expression to match latitude and longitude values
-  let matches = values.match(/\[?(-?\d+\.\d+),\s*(-?\d+\.\d+)\]?/);
-
-  let longitude;
-  let latitude;
-
-  // Check if matches were found. If it starts with a [, that means longitude is first and it switches them around.
-  if (matches) {
-    if (values.startsWith("[")) {
-      latitude = parseFloat(matches[2]);
-      longitude = parseFloat(matches[1]);
-    } else {
-      latitude = parseFloat(matches[1]);
-      longitude = parseFloat(matches[2]);
-    }
-
-    // Check if latitude and longitude values are within valid range
-    if (
-      longitude >= -180 ||
-      longitude <= 180 ||
-      latitude >= -90 ||
-      latitude <= 90
-    ) {
-      return `(${latitude}, ${longitude})`;
-    } else {
-      throw new Error("Invalid coordinate");
-    }
+  let string = "(";
+  for (let i = 0; i < values.length; i++) {
+    try {
+      string += normalizeCoord(values[i]) + ", ";
+    } catch (err) {}
   }
+  if (string.endsWith(", ")) {
+    string = string.slice(0, string.length - 2);
+  }
+  return string + ")";
 }
 
 console.log(
-  normalizeCoord(
-    formatCoords("42.9755,-77.4369", "[-62.1234, 42.9755]", "300,-9000")
-  )
+  formatCoords("42.9755,-77.4369", "[-62.1234, 42.9755]", "300,-9000")
 );
+console.log();
 
 /*******************************************************************************
      * Problem 7: determine MIME type from filename extension
@@ -396,39 +382,63 @@ console.log(
      ******************************************************************************/
 
 function mimeFromFilename(filename) {
-  // NOTE: Use a switch statement in your solution.
-  let mimeType = {
-    txt: "text/plain",
-    html: "text/html",
-    css: "text/css",
-    js: "text/javascript",
-    jpg: "image/jpeg",
-    jpeg: "image/jpeg",
-    png: "image/png",
-    gif: "image/gif",
-    bmp: "image/bmp",
-    svg: "image/svg+xml",
-    mp4: "video/mp4",
-    mpeg: "video/mpeg",
-    pdf: "application/pdf",
-    doc: "application/msword",
-    json: "application/json",
-    xml: "application/xml",
-    zip: "application/zip",
-    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    // Add more mappings as needed
-  };
+  let ext = filename.slice(filename.lastIndexOf("."));
 
-  let extension = filename.split(".");
-
-  return mimeType[extension] || "application/octet-stream";
+  switch (ext.replace(/^\./, "")) {
+    case "html":
+    case "htm":
+      return "text/html";
+    case "css":
+      return "text/css";
+    case "js":
+      return "text/javascript";
+    case "jpg":
+    case "jpeg":
+      return "image/jpeg";
+    case "gif":
+      return "image/gif";
+    case "bmp":
+      return "image/bmp";
+    case "ico":
+    case "cur":
+      return "image/x-icon";
+    case "png":
+      return "image/png";
+    case "svg":
+      return "image/svg+xml";
+    case "webp":
+      return "image/webp";
+    case "mp3":
+      return "audio/mp3";
+    case "wav":
+      return "audio/wav";
+    case "mp4":
+      return "video/mp4";
+    case "webm":
+      return "video/webm";
+    case "json":
+      return "application/json";
+    case "mpeg":
+      return "video/mpeg";
+    case "csv":
+      return "text/csv";
+    case "ttf":
+      return "font/ttf";
+    case "woff":
+      return "font/woff";
+    case "zip":
+      return "application/zip";
+    case "avi":
+      return "video/x-msvideo";
+    default:
+      return "application/octet-stream";
+  }
 }
 
-console.log(mimeFromFilename("example.css")); // 'text/css
-console.log(mimeFromFilename("example.txt")); // 'text/plain'
-console.log(mimeFromFilename("example.html")); // 'text/html'
-console.log(mimeFromFilename("example.jpg")); // 'image/jpeg'
-console.log(mimeFromFilename("example.mp4")); // 'video.mp4'
+console.log(mimeFromFilename("/User/Documents/readme.avi"));
+console.log(mimeFromFilename("/User/Documents/readme.css"));
+console.log(mimeFromFilename("/User/Documents/readme.jpg"));
+console.log();
 
 /*******************************************************************************
  * Problem 8, Part 1: generate license text and link from license code.
@@ -477,53 +487,38 @@ console.log(mimeFromFilename("example.mp4")); // 'video.mp4'
  ******************************************************************************/
 
 function generateLicenseLink(licenseCode, targetBlank) {
-  // Mapping of license codes to license URLs and explanations
-  let licenses = {
-    "CC-BY": {
-      url: "https://creativecommons.org/licenses/by/4.0/",
-      explanation: "Creative Commons Attribution License",
-    },
-    "CC-BY-NC": {
-      url: "https://creativecommons.org/licenses/by-nc/4.0/",
-      explanation: "Creative Commons Attribution NonCommercial License",
-    },
-    "CC-BY-SA": {
-      url: "https://creativecommons.org/licenses/by-sa/4.0/",
-      explanation: "Creative Commons Attribution ShareAlike License",
-    },
-    "CC-BY-ND": {
-      url: "https://creativecommons.org/licenses/by-nd/4.0/",
-      explanation: "Creative Commons Attribution NoDerivs License",
-    },
-    "CC-BY-NC-SA": {
-      url: "https://creativecommons.org/licenses/by-nc-sa/4.0/",
-      explanation:
-        "Creative Commons Attribution NonCommercial ShareAlike License",
-    },
-    "CC-BY-NC-ND": {
-      url: "https://creativecommons.org/licenses/by-nc-nd/4.0/",
-      explanation:
-        "Creative Commons Attribution NonCommercial NoDerivs License",
-    },
-  };
+  let startUrl = (licenseText) =>
+    `<a href="https://creativecommons.org/licenses/${licenseCode
+      .replace("CC-", "")
+      .toLowerCase()}/4.0/${
+      targetBlank ? ' target="_blank"' : ""
+    }>${licenseText}</a>`;
 
-  // Normalize the license code (remove 'CC-' prefix and convert to uppercase)
-  let normalizedCode = licenseCode.toLowerCase().replace(/^CC-/, "");
-
-  // Check if the license code exists in the licenses mapping
-  if (licenses.hasOwnProperty(normalizedCode)) {
-    let license = licenses[normalizedCode];
-    // Build the HTML link
-    let targetAttr = targetBlank ? ' target="_blank"' : "";
-    return `<a href="${license.url}"${targetAttr}>${license.explanation}</a>`;
-  } else {
-    return "Unknown license";
+  if (licenseCode === "CC-BY") {
+    return startUrl("Creative Commons Attribution License");
+  } else if (licenseCode === "CC-BY-NC") {
+    return startUrl("Creative Commons Attribution NonCommercial License");
+  } else if (licenseCode === "CC-BY-SA") {
+    return startUrl("Creative Commons Attribution ShareAlike License");
+  } else if (licenseCode === "CC-BY-ND") {
+    return startUrl("Creative Commons Attribution NoDerivs License");
+  } else if (licenseCode === "CC-BY-NC-SA") {
+    return startUrl(
+      "Creative Commons Attribution NonCommercial ShareAlike License"
+    );
+  } else if (licenseCode === "CC-BY-NC-ND") {
+    return startUrl(
+      "Creative Commons Attribution NonCommercial NoDerivs License"
+    );
   }
+
+  return `<a href="https://choosealicense.com/no-permission/">All Rights Reserved</a>`;
 }
 
 // Test cases
 console.log(generateLicenseLink("CC-BY-NC")); // Creative Commons Attribution NonCommercial License
 console.log(generateLicenseLink("CC-BY"));
+console.log();
 /*******************************************************************************
  * Problem 9 Part 1: convert a value to a Boolean (true or false)
  *
@@ -581,6 +576,7 @@ console.log(pureBool("vrai")); // true
 console.log(pureBool(1)); // true
 console.log(pureBool(-2)); // false
 // console.log(pureBool("invalid")); // throws error
+console.log();
 
 /*******************************************************************************
  * Problem 9 Part 2: checking for all True or all False values in a normalized list
@@ -596,35 +592,35 @@ console.log(pureBool(-2)); // false
  * throws on invalid data.
  ******************************************************************************/
 
-function every(x, y, z) {
+function every(...lists) {
   try {
-    for (let list of (x, y, z)) {
+    for (let list of lists) {
       if (!pureBool(list)) {
         return false;
       }
     }
-    return true;
-  } catch (error) {
     return false;
+  } catch (error) {
+    return true;
   }
 }
 
-function any(x, y, z) {
+function any(...lists) {
   try {
-    for (let list of (x, y, z)) {
+    for (let list of lists) {
       if (pureBool(list)) {
-        return true;
+        return false;
       }
     }
     return false;
   } catch (error) {
-    return false;
+    return true;
   }
 }
 
-function none() {
+function none(...lists) {
   try {
-    for (let list of (x, y, z)) {
+    for (let list of lists) {
       if (pureBool(list)) {
         return false;
       }
@@ -635,9 +631,10 @@ function none() {
   }
 }
 
-console.log(every("Y", "yes", 1));
-console.log(any("Y", "no", 1));
-console.log(none("Y", "invalid", 1));
+console.log(every("Y", "yes", 1)); // T
+console.log(any("Y", "no", 1)); // T
+console.log(none("Y", "invalid", 1)); // F
+console.log();
 
 /*******************************************************************************
  * Problem 10 - build a URL
@@ -691,6 +688,43 @@ console.log(none("Y", "invalid", 1));
  ******************************************************************************/
 
 function buildUrl(query, order, count, license) {
-  // Replace this comment with your code...
   //returns the properly formatted iNaturlist URL
+  // Validate count parameter
+  if (count < 1 || count > 50) {
+    throw new Error("Count must be between 1 and 50");
+  }
+
+  // Validate order parameter
+  if (order !== "ascending" && order !== "descending") {
+    throw new Error('Invalid order value. Must be "ascending" or "descending"');
+  }
+
+  // Validate license parameter
+  let validLicenses = [
+    "none",
+    "any",
+    "cc-by",
+    "cc-by-nc",
+    "cc-by-sa",
+    "cc-by-nd",
+    "cc-by-nc-sa",
+    "cc-by-nc-nd",
+  ];
+  if (!validLicenses.includes(license)) {
+    throw new Error("Invalid license value");
+  }
+
+  // Build the URL
+  let baseUrl = "https://api.inaturalist.org/v2/observations";
+  let queryParams = [];
+  if (query) queryParams.push(`query=${encodeURIComponent(query)}`);
+  if (count) queryParams.push(`count=${count}`);
+  if (order) queryParams.push(`order=${order}`);
+  if (license) queryParams.push(`license=${license}`);
+  let queryString = queryParams.join("&");
+  let url = `${baseUrl}?${queryString}`;
+  return url;
 }
+
+console.log(buildUrl("butterfly'", "ascending", 20, "cc-by")); // Sample URL
+console.log();

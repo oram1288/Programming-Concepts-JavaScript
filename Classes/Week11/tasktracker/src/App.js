@@ -5,6 +5,8 @@ import AddTask from "./components/AddTask";
 import Temp1 from "./components/Temp1";
 import Temp2 from "./components/Temp2";
 import Temp3 from "./components/Temp3";
+import Temp4 from "./components/Temp4";
+
 import { useState } from "react";
 
 function App() {
@@ -29,7 +31,7 @@ function App() {
     },
   ]);
 
-  let [showAddTask, setShowAddTask] = useState(false);
+  let [showAddTask, setShowAddTask] = useState(true);
 
   let deleteTask = (id) => {
     // console.log("Delete", id);
@@ -58,12 +60,16 @@ function App() {
     setTasks([...tasks, newTask]);
   };
 
-  let onClick = (e) => {
-    console.log("click from App component");
-  };
+  // let onClick = (e) => {
+  //   console.log("click from App component");
+  // };
   return (
     <div className="container">
-      <Header title="Task Tracker" onClick={onClick} />
+      <Header
+        title="Task Tracker"
+        onAdd={() => setShowAddTask(!showAddTask)}
+        showAdd={showAddTask}
+      />
       {showAddTask && <AddTask onAdd={addTask} />}
 
       {tasks.length > 0 ? (
@@ -75,6 +81,7 @@ function App() {
       {/* <Temp1 /> */}
       {/* <Temp2 /> */}
       {/* <Temp3 /> */}
+      {/* {<Temp4 />} */}
     </div>
   );
 }

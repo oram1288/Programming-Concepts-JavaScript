@@ -82,3 +82,21 @@ IN OUR PROJECT:
 Now we can access the server by running "npm run server" command...
 
 YOU MIGHT NEED TO GO AND ADD DB.JSON() IN YOUR PROJECT FOLDER WITH SOME JSON DATA....
+
+Now we are ready to make API calls like... GET, DELETE,
+
+
+DELETE API CALL:
+
+
+deleteTask before API calls: 
+
+ // console.log("Delete", id);
+
+    setTasks(tasks.filter((task) => task.id !== id)); //return all tasks BUT the one with this task.id???
+
+addTask before API calls:
+
+ // the json server itself adds an id to all records..
+    // let id = Math.floor(Math.random() * 1000) + 1;
+    // let newTask = { id, ...task };

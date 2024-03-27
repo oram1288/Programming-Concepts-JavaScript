@@ -87,16 +87,25 @@ Now we are ready to make API calls like... GET, DELETE,
 
 
 DELETE API CALL:
-
-
-deleteTask before API calls: 
+    deleteTask before API calls: 
 
  // console.log("Delete", id);
 
     setTasks(tasks.filter((task) => task.id !== id)); //return all tasks BUT the one with this task.id???
 
-addTask before API calls:
+POST:
+    addTask before API calls:
 
  // the json server itself adds an id to all records..
     // let id = Math.floor(Math.random() * 1000) + 1;
     // let newTask = { id, ...task };
+
+PUT: 
+    Updating the data on server...
+
+
+React Router:
+    Make links in our react application
+    
+    To install react router dom:
+        npm i react-router-dom

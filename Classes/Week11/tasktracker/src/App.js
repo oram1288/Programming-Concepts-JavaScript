@@ -6,8 +6,12 @@ import Temp1 from "./components/Temp1";
 import Temp2 from "./components/Temp2";
 import Temp3 from "./components/Temp3";
 import Temp4 from "./components/Temp4";
+import Footer from "./components/Footer";
+import About from "./components/About";
 
 import { useState, useEffect } from "react";
+
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   let [tasks, setTasks] = useState([
@@ -47,6 +51,14 @@ function App() {
     return data;
   };
 
+  // Fetch task
+
+  const fetchTask = async (id) => {
+    const res = await fetch(`http://localhost:5000/tasks/${id}`);
+    const data = await res.json();
+    return data;
+  };
+
   let [showAddTask, setShowAddTask] = useState(true);
 
   // Delete Button
@@ -63,12 +75,24 @@ function App() {
 
   // toggle reminder
 
-  let toggleReminder = (id) => {
-    // console.log(id);
+  let toggleReminder = async (id) => {
+    // bring the task to which we want to toggle reminder
+
+    const taskToToggle = await fetchTask(id);
+    const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
+
+    const res = await fetch(`http://localhost:5000/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(updTask),
+    });
+    const data = await res.json();
 
     setTasks(
       tasks.map((task) =>
-        task.id === id ? { ...task, reminder: !task.reminder } : task
+        task.id === id ? { ...task, reminder: data.reminder } : task
       )
     );
   };
@@ -94,25 +118,53 @@ function App() {
   //   console.log("click from App component");
   // };
   return (
-    <div className="container">
-      <Header
-        title="Task Tracker"
-        onAdd={() => setShowAddTask(!showAddTask)}
-        showAdd={showAddTask}
-      />
-      {showAddTask && <AddTask onAdd={addTask} />}
+    <Router>
+      <div className="container">
+        <Header
+          title="Task Tracker"
+          onAdd={() => setShowAddTask(!showAddTask)}
+          showAdd={showAddTask}
+        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                {showAddTask && <AddTask onAdd={addTask} />}
 
-      {tasks.length > 0 ? (
-        <Tasks tasks={tasks} onDelete={deleteTask} onToggle={toggleReminder} />
-      ) : (
-        "No taks to show"
-      )}
+                {tasks.length > 0 ? (
+                  <Tasks
+                    tasks={tasks}
+                    onDelete={deleteTask}
+                    onToggle={toggleReminder}
+                  />
+                ) : (
+                  "No tasks to show"
+                )}
+              </>
+            }
+          />
+          {/* {showAddTask && <AddTask onAdd={addTask} />}
 
-      {/* <Temp1 /> */}
-      {/* <Temp2 /> */}
-      {/* <Temp3 /> */}
-      {/* {<Temp4 />} */}
-    </div>
+          {tasks.length > 0 ? (
+            <Tasks
+              tasks={tasks}
+              onDelete={deleteTask}
+              onToggle={toggleReminder}
+            />
+          ) : (
+            "No taks to show"
+          )} */}
+
+          {/* <Temp1 /> */}
+          {/* <Temp2 /> */}
+          {/* <Temp3 /> */}
+          {/* {<Temp4 />} */}
+          <Route path="/about" element={<About />} />
+        </Routes>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 

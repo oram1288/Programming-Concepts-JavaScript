@@ -8,6 +8,7 @@ import Temp3 from "./components/Temp3";
 import Temp4 from "./components/Temp4";
 import Footer from "./components/Footer";
 import About from "./components/About";
+import TaskDetails from "./components/TaskDetails";
 
 import { useState, useEffect } from "react";
 
@@ -73,7 +74,7 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id));
   };
 
-  // toggle reminder
+  // Toggle reminder
 
   let toggleReminder = async (id) => {
     // bring the task to which we want to toggle reminder
@@ -81,6 +82,7 @@ function App() {
     const taskToToggle = await fetchTask(id);
     const updTask = { ...taskToToggle, reminder: !taskToToggle.reminder };
 
+    // server update
     const res = await fetch(`http://localhost:5000/tasks/${id}`, {
       method: "PUT",
       headers: {
@@ -90,6 +92,7 @@ function App() {
     });
     const data = await res.json();
 
+    // UI update here...
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, reminder: data.reminder } : task
@@ -102,7 +105,7 @@ function App() {
   let addTask = async (task) => {
     const res = await fetch("http://localhost:5000/tasks", {
       method: "POST",
-      header: { "Content-type": "application/json" },
+      headers: { "Content-type": "application/json" },
       body: JSON.stringify(task),
     });
 
@@ -114,9 +117,6 @@ function App() {
     setTasks([...tasks, data]);
   };
 
-  // let onClick = (e) => {
-  //   console.log("click from App component");
-  // };
   return (
     <Router>
       <div className="container">
@@ -161,6 +161,8 @@ function App() {
           {/* <Temp3 /> */}
           {/* {<Temp4 />} */}
           <Route path="/about" element={<About />} />
+          <Route path="/task/:id" element={<TaskDetails />} />
+          <Route path="/temp1" element={<Temp1 />} />
         </Routes>
         <Footer />
       </div>

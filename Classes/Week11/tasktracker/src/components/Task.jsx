@@ -1,5 +1,5 @@
 import { FaTimes } from "react-icons/fa";
-import { BiAtom } from "react-icons/bi";
+import { Link } from "react-router-dom";
 
 const Task = ({ task, onDelete, onToggle }) => {
   return (
@@ -15,8 +15,7 @@ const Task = ({ task, onDelete, onToggle }) => {
         />
       </h3>
       <p>
-        <BiAtom />
-        {task.day}
+        <Link to={`/task/${task.id}`}>View Details</Link>
       </p>
     </div>
   );

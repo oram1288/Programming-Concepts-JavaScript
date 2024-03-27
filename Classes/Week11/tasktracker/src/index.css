@@ -94,3 +94,10 @@ header {
 footer {
   text-align: center;
 }
+
+.taskD {
+  text-align: center;
+  border: 1px solid blue;
+  max-width: 400px;
+  margin: 10px auto;
+}

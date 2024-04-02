@@ -1,34 +1,44 @@
-// import logo from "./logo.svg";
 import "./App.css";
 import ProductList from "./components/ProductList";
+import Footer from "./components/Footer";
 
-import { useState, useEffect } from "react";
+// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
-  let [tasks, setTasks] = useState([
-    // {
-    //   id: 1,
-    //   text: "School App",
-    //   day: "March 18th at 3:30pm",
-    //   reminder: true,
-    // },
-    // {
-    //   id: 2,
-    //   text: "Gym",
-    //   day: "March 20th at 2:30pm",
-    //   reminder: false,
-    // },
-    // {
-    //   id: 3,
-    //   text: "Interview App",
-    //   day: "March 21th at 1:30pm",
-    //   reminder: true,
-    // },
-  ]);
+  const products = [
+    {
+      id: 1,
+      name: "Product 1",
+      description: "Description of Product 1",
+      price: 10,
+    },
+
+    {
+      id: 2,
+      name: "Product 2",
+      description: "Description of Product 2",
+      price: 20,
+    },
+
+    {
+      id: 3,
+      name: "Product 3",
+      description: "Description of Product 3",
+      price: 30,
+    },
+  ];
+
+  const getProducts = () => products;
+
+  const getProductById = (productId) =>
+    products.find((product) => product.id === productId);
 
   return (
-    <div className="App">
-      <ProductList />
+    <div class="App">
+      <div className="container">
+        <h1>Welcome to _________</h1>
+        <Footer />
+      </div>
     </div>
   );
 }

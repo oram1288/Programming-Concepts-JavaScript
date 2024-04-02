@@ -30,10 +30,9 @@ h1 {
   color: #fff;
   border: none;
   padding: 10px 20px;
-  margin: 5px;
-  border-radius: 5px;
+  margin: 10px;
+  border-radius: 10px;
   cursor: pointer;
   font-size: 15px;
   display: inline-block;
-  /* discuss it later..inline-block */
 }

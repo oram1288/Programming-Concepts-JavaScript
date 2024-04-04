@@ -1,7 +1,11 @@
 import React from "react";
 
 const ShoppingCart = () => {
-  return <div></div>;
+  return (
+    <div>
+      <h1>h1</h1>
+    </div>
+  );
 };
 
 export default ShoppingCart;

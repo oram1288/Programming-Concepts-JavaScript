@@ -69,6 +69,6 @@ function loadAPI() {
         <h3> Title: ${user.title}</h3> <br>
         <h3> Completed: ${user.completed}</h3>  </p>`;
       });
-      document.querySelector("#output").innerHTML = output;
+      document.querySelector("#q3").innerHTML = output;
     });
 }

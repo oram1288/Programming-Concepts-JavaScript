@@ -19,7 +19,7 @@ File structure:
     When the react project is sent, node_modules is not included. On receving side, 
     we need to "npm install" that will read "package.json" and produce back the node_modules folder.
 
-    MPA /SPA
+    MPA (Multipage application) / SPA (Sinlgepage application)
     
     npm install (to install the "project")
     npm start (to run the "project")
@@ -34,7 +34,7 @@ each component returns "JSX"...
 
 JSX is actually a combination of HTML, CSS and JavaScript!
 
-We use JSX to show the output on our components!
+We use JSX to show the  output on our components!
 
 JSX files:
     "rfce" to automatically have a function!

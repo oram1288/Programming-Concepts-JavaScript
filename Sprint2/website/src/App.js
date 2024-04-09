@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 function App() {
   return (
     <div class="App">
+      <h1>My First react project</h1>
       <div className="container">
         <Header
         // title="Welcome to '' "

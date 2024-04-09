@@ -2,19 +2,19 @@ import "./App.css";
 import ProductList from "./components/ProductList";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import About from "./components/About";
 
 // import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 function App() {
   return (
     <div class="App">
-      <h1>My First react project</h1>
+      <div className="header">
+        <Header title="Welcome to Ikea" />
+      </div>
       <div className="container">
-        <Header
-        // title="Welcome to '' "
-        // onAdd={() => setShowAddTask(!showAddTask)}
-        // showAdd={showAddTask}
-        />
+        <About />
+        <ProductList />
         <br />
         <hr />
         <br />

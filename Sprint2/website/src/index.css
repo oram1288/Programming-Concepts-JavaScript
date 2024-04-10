@@ -34,7 +34,7 @@ h1 {
   background-color: white;
   border: 1px solid black;
   border-radius: 15px;
-  text-align: center;
+  text-align: left;
 }
 
 .left {
@@ -58,4 +58,12 @@ header {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.product {
+  background-color: #bbc7e0;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
 }

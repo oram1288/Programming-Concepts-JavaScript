@@ -1,12 +1,14 @@
-import React from "react";
+import Product from "./Product";
 import ProductDetails from "./ProductDetails";
 
-const ProductList = () => {
+const ProductList = ({ products }) => {
   return (
-    <div>
-      <h1>Product List</h1>
-      <ProductDetails />
-    </div>
+    <>
+      {products.map((product) => (
+        <Product key={product.id} product={product} />
+      ))}
+      {/* <ProductDetails /> */}
+    </>
   );
 };
 

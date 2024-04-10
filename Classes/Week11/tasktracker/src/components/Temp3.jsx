@@ -5,7 +5,7 @@ const Temp3 = () => {
   let [numbers, setNumbers] = useState(nums);
   let changeList = () => {
     setNumbers((previousState) => {
-      return [...previousState, Math.round(Math.round() * 50)];
+      return [...previousState, Math.round(Math.random() * 50)];
     });
   };
   return (

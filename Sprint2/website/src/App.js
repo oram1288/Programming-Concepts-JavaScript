@@ -75,24 +75,33 @@ function App() {
           <Header title="Welcome to Ikea" />
         </div>
         <div className="container">
-          <About />
           <Routes>
-            {products.length > 0 ? (
-              <ProductList
-                products={products}
-                onDelete={deleteProduct}
-                onAdd={addProduct}
-                onToggle={toggleWarranty}
-              />
-            ) : (
-              "No Products in Shoppping Cart"
-            )}
-            <ShoppingCart />
-            <CheckOut />
+            <Route path="/about" element={<About />} />
+            {/* <About /> */}
+            <Route
+              path="/productlist"
+              element={
+                products.length > 0 ? (
+                  <ProductList
+                    products={products}
+                    onDelete={deleteProduct}
+                    onAdd={addProduct}
+                    onToggle={toggleWarranty}
+                  />
+                ) : (
+                  "No Products in Shoppping Cart"
+                )
+              }
+            />
+            <Route path="/about" element={<ShoppingCart />} />
+            <Route path="/about" element={<CheckOut />} />
+            {/* <ShoppingCart />
+            <CheckOut /> */}
           </Routes>
           <br />
           <hr />
           <br />
+          <Link to="/about">About</Link>
           <Footer />
         </div>
       </div>

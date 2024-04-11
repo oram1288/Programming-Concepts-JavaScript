@@ -56,8 +56,6 @@ const CheckOut = ({ onAdd }) => {
 
         <input type="submit" value="Confirm" className="btn" />
       </form>
-
-      <a href="/">Go Back</a>
     </div>
   );
 };

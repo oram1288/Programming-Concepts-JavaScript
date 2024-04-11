@@ -16,9 +16,13 @@ const ProductList = ({ products, onDelete, onAdd, onToggle }) => {
         />
       ))}
       {/* <ProductDetails /> */}
-      <Button text="Shopping Cart" color="navy" onClick={onAdd} />
       <br />
-      <a href="/">Go Back</a>
+      <a class="btn" href="/shoppingcart">
+        Shopping Cart
+      </a>
+      {/* <Button text="Shopping Cart" color="navy" onClick={onAdd} /> */}
+      <br />
+      {/* <a href="/">Go Back</a> */}
     </>
   );
 };

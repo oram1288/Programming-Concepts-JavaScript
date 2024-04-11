@@ -17,7 +17,9 @@ const ShoppingCart = ({ products, onDelete, onToggle }) => {
       ))}
       <Button text="Check Out" color="navy" onClick={onDelete} /> */}
 
-      <a href="/">Go Back</a>
+      <a class="btn" href="/checkout">
+        Check Out
+      </a>
     </>
   );
 };

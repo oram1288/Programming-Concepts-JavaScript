@@ -72,12 +72,12 @@ function App() {
     <Router>
       <div className="App">
         <div className="header">
-          <Header title="Welcome to Ikea" />
+          <Header title="Welcome to Spark!" />
         </div>
         <div className="container">
+          <About />
           <Routes>
-            <Route path="/about" element={<About />} />
-            {/* <About /> */}
+            {/* <Route path="/about" element={<About />} /> */}
             <Route
               path="/productlist"
               element={
@@ -93,15 +93,12 @@ function App() {
                 )
               }
             />
-            <Route path="/about" element={<ShoppingCart />} />
-            <Route path="/about" element={<CheckOut />} />
-            {/* <ShoppingCart />
-            <CheckOut /> */}
+            <Route path="/shoppingcart" element={<ShoppingCart />} />
+            <Route path="/checkout" element={<CheckOut />} />
           </Routes>
           <br />
           <hr />
           <br />
-          <Link to="/about">About</Link>
           <Footer />
         </div>
       </div>

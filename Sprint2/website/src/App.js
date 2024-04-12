@@ -73,7 +73,7 @@ function App() {
     <Router>
       <div className="App">
         <div className="header">
-          <Header title="Welcome to Spark!" />
+          <Header title="Welcome to Spark" />
         </div>
         <div className="container">
           <About />

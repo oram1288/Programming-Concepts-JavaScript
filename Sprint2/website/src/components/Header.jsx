@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 function Header({ title, onAdd }) {
   return (
     <header>
-      <h1>{title}</h1>
+      <h1>{title}!</h1>
     </header>
   );
 }

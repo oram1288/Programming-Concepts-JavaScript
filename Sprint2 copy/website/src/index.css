@@ -1,0 +1,132 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: #9badd2;
+}
+
+h1 {
+  color: navy;
+}
+
+h2 {
+  color: navy;
+}
+
+.header {
+  max-width: 700px;
+  min-height: 50px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.container {
+  max-width: 600px;
+  min-height: 100px;
+  margin: 30px auto;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.left {
+  text-align: left;
+}
+
+.btn {
+  background: navy;
+  color: #fff;
+  border: none;
+  padding: 6px 16px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn2 {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 15px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+header {
+  align-items: center;
+}
+
+.pic {
+  border: 2px solid navy;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+.product {
+  background-color: #bbc7e0;
+  margin: 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  /* cursor: pointer; */
+}
+
+.product h3 {
+  display: flex;
+  justify-content: space-between;
+}
+
+.product.warranty {
+  border-left: 5px solid navy;
+}
+
+.add-form {
+  border: 2px solid navy;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.form-control {
+  margin: 20px 0;
+}
+
+.form-control input {
+  /* max-width: 500px auto; */
+  width: 500px;
+  height: 40px;
+  margin: 5px;
+  padding: 3px 10px;
+  font-size: 17px;
+}
+
+.form-control-check {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.product-details {
+  text-align: center;
+  border: 1px solid navy;
+  max-width: 400px;
+  margin: 10px auto;
+}

@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 
-function Header({ title, onAdd }) {
+function Header({ title }) {
   return (
     <header>
       <h1>{title}!</h1>
+      <p>Electronic Superstore</p>
     </header>
   );
 }

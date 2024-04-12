@@ -5,6 +5,7 @@ import Footer from "./components/Footer";
 import About from "./components/About";
 import ShoppingCart from "./components/ShoppingCart";
 import CheckOut from "./components/CheckOut";
+import ProductDetails from "./components/ProductDetails";
 
 import { useState } from "react";
 
@@ -93,6 +94,7 @@ function App() {
                 )
               }
             />
+            <Route path="/product/:id" element={<ProductDetails />} />
             <Route path="/shoppingcart" element={<ShoppingCart />} />
             <Route path="/checkout" element={<CheckOut />} />
           </Routes>

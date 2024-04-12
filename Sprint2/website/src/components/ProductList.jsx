@@ -1,5 +1,5 @@
 import Product from "./Product";
-import Button from "./Button";
+// import Button from "./Button";
 // import ProductDetails from "./ProductDetails";
 
 const ProductList = ({ products, onDelete, onAdd, onToggle }) => {
@@ -22,7 +22,6 @@ const ProductList = ({ products, onDelete, onAdd, onToggle }) => {
       </a>
       {/* <Button text="Shopping Cart" color="navy" onClick={onAdd} /> */}
       <br />
-      {/* <a href="/">Go Back</a> */}
     </>
   );
 };

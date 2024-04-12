@@ -3,6 +3,8 @@ import { IoPricetag } from "react-icons/io5";
 import { FaTimes } from "react-icons/fa";
 import { IoMdAddCircleOutline } from "react-icons/io";
 
+import { Link } from "react-router-dom";
+
 import { useState } from "react";
 
 const Product = ({ product, onDelete, onAdd, onToggle }) => {
@@ -22,26 +24,30 @@ const Product = ({ product, onDelete, onAdd, onToggle }) => {
       className={`product ${product.warranty ? "warranty" : ""}`}
       onDoubleClick={() => onToggle(product.id)}
     >
-      <h3>
-        {product.name}
-        <IoMdAddCircleOutline
-          style={{ color: "navy", cursor: "pointer" }}
-          onClick={() => onAdd(product.id)}
-        />
-        <FaTimes
-          style={{ color: "red", cursor: "pointer" }}
-          onClick={() => onDelete(product.id)}
-        />
-      </h3>
-      <p>
-        <MdDescription style={{ color: "white", margin: "5px" }} />
-        {product.description}
-      </p>
-      <p>
-        <IoPricetag style={{ color: "white", margin: "5px" }} />
-        {product.price}
-      </p>
       <form className="add-form" onSubmit={onSubmit}>
+        <h3>
+          {product.name}
+          <IoMdAddCircleOutline
+            style={{ color: "navy", cursor: "pointer" }}
+            onClick={() => onAdd(product.id)}
+          />
+          <FaTimes
+            style={{ color: "red", cursor: "pointer" }}
+            onClick={() => onDelete(product.id)}
+          />
+        </h3>
+        <p>
+          <Link to={`/product/${product.id}`}>View Details</Link>
+        </p>
+        <p>
+          <MdDescription style={{ color: "white", margin: "5px" }} />
+          {product.description}
+        </p>
+        <p>
+          <IoPricetag style={{ color: "white", margin: "5px" }} />
+          {product.price}
+        </p>
+        {/* <form className="add-form" onSubmit={onSubmit}> */}
         <div className="form-control-check">
           <label>Extended Warranty</label>
           <input

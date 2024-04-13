@@ -1,26 +1,42 @@
-import Product from "./Product";
-// import Button from "./Button";
-// import ProductDetails from "./ProductDetails";
+// import Product from "./Product";
+import Button from "./Button";
 
-const ProductList = ({ products, onDelete, onAdd, onToggle }) => {
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+
+const ProductList = () => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const response = await fetch("http://localhost:5000/products");
+      if (response.ok) {
+        const data = await response.json();
+        setProducts(data);
+      } else {
+        console.error("failed to fetch products");
+      }
+    };
+    fetchProducts();
+  }, []);
+
   return (
     <>
       <h2>Product List</h2>
       {products.map((product) => (
-        <Product
-          key={product.id}
-          product={product}
-          onDelete={onDelete}
-          onAdd={onAdd}
-          onToggle={onToggle}
-        />
+        <div class="product" key={product.id}>
+          <h3>{product.name}</h3>
+          {/* <Button product={product} /> */}
+          <p>{product.description}</p>
+          <p>${product.price}</p>
+          <Button product={product} />
+          <Link to={`/products/${products.id}`}>View Details</Link>
+        </div>
       ))}
-      {/* <ProductDetails /> */}
       <br />
       <a class="btn" href="/shoppingcart">
         Shopping Cart
       </a>
-      {/* <Button text="Shopping Cart" color="navy" onClick={onAdd} /> */}
       <br />
     </>
   );

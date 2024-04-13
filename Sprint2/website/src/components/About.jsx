@@ -1,4 +1,4 @@
-import Button from "./Button";
+// import Button from "./Button";
 import picture from "../images/Spark.png";
 
 const About = ({ onAdd }) => {

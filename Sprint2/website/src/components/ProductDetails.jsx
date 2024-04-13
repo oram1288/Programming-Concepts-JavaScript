@@ -14,16 +14,18 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await fetch(`http://localhost:5000/productlist/${params.id}`);
-      const data = await res.json();
-
-      if (res.status === 404) {
+      if (res.status !== 200) {
         navigate("/");
       }
+      const data = await res.json();
+
+      // if (res.status === 404) {
+      //   navigate("/");
+      // }
 
       setProduct(data);
       setLoading(false);
     };
-
     fetchProduct();
   });
 
@@ -32,16 +34,16 @@ const ProductDetails = () => {
   ) : (
     <div className="product-details">
       <p>{pathname}</p>
-      <h3>{product.description}</h3>
-      <p>{product.price}</p>
+      <h3>{product.price}</h3>
+      <p>{product.description}</p>
       <p>{product.warranty.toString()}</p>
-      {/* <Button
+      <Button
         text="Go Back"
         color="lightblue"
         onClick={() => {
           navigate(-1);
         }}
-      /> */}
+      />
     </div>
   );
 };

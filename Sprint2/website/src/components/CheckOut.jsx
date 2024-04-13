@@ -56,6 +56,10 @@ const CheckOut = ({ onAdd }) => {
 
         <input type="submit" value="Confirm" className="btn" />
       </form>
+
+      <a class="btn2" href="/shoppingcart">
+        Go Back
+      </a>
     </div>
   );
 };

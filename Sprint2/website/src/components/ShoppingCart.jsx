@@ -42,7 +42,7 @@ const ShoppingCart = () => {
               {product.name} - ${product.price}
             </p>
             <button className="btn" onClick={() => deleteCart(product.id)}>
-              X
+              Remove
             </button>
           </div>
         ))}

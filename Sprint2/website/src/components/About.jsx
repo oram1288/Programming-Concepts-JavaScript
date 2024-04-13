@@ -4,7 +4,7 @@ import picture from "../images/Spark.png";
 const About = ({ onAdd }) => {
   return (
     <div>
-      <img src={picture} alt="Picture" class="pic"></img>
+      <img src={picture} alt="" class="pic"></img>
       <br />
       <br />
       <h2>About</h2>

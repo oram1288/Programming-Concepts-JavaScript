@@ -26,11 +26,10 @@ const ProductList = () => {
       {products.map((product) => (
         <div class="product" key={product.id}>
           <h3>{product.name}</h3>
-          {/* <Button product={product} /> */}
           <p>{product.description}</p>
           <p>${product.price}</p>
-          <Button product={product} />
           <Link to={`/products/${products.id}`}>View Details</Link>
+          <Button product={product} />
         </div>
       ))}
       <br />

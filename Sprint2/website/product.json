@@ -103,6 +103,13 @@
       "name": "Product 3",
       "description": "Description of Product 3",
       "price": 30
+    },
+    {
+      "id": 1,
+      "name": "Apple Airpod Max",
+      "description": "2022 Apple Airpod Max Noise Cancelling Bluetooth headphones.",
+      "price": 299.99,
+      "image": "Headphones"
     }
   ]
 }

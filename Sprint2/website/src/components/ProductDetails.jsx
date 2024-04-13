@@ -13,8 +13,8 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`http://localhost:5000/products/${params.id}`);
-      if (res.status === 404) {
+      const res = await fetch(`http://localhost:5000/productlist/${params.id}`);
+      if (res.status !== 200) {
         navigate("/");
       }
       const data = await res.json();

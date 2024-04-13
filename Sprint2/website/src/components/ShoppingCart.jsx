@@ -30,13 +30,13 @@ const ShoppingCart = () => {
     <>
       <h2>Shoppping Cart</h2>
       <div class="product">
-        {cart.map((cart) => (
+        {cart.map((products) => (
           <div class="product-cart">
             {" "}
-            <p key={cart.id}>
-              {cart.name} - ${cart.price}
+            <p key={products.id}>
+              {products.name} - ${products.price}
             </p>
-            <button className="btn" onClick={() => deleteCart(cart.id)}>
+            <button className="btn" onClick={() => deleteCart(products.id)}>
               Remove
             </button>
           </div>

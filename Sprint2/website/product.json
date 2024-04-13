@@ -110,6 +110,13 @@
       "description": "2022 Apple Airpod Max Noise Cancelling Bluetooth headphones.",
       "price": 299.99,
       "image": "Headphones"
+    },
+    {
+      "id": 6,
+      "name": "Samsung TV",
+      "description": "Samsung 55inch 4K Led smart TV",
+      "price": 599.99,
+      "image": "tv"
     }
   ]
 }

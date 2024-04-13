@@ -89,6 +89,11 @@ header {
   border: 1px solid black;
 }
 
+.listimages {
+  width: 100px;
+  height: auto;
+}
+
 .product-cart {
   background-color: white;
   margin: 15px;

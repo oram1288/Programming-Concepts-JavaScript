@@ -5,42 +5,42 @@
       "name": "Apple Airpod Max",
       "description": "2022 Apple Airpod Max Noise Cancelling Bluetooth headphones.",
       "price": 299.99,
-      "image": "Headphones"
+      "image": "headphones"
     },
     {
       "id": 2,
       "name": "USB MacBook Charger",
       "description": "Apple USB MacBook charger, 8ft 96W.",
       "price": 30.99,
-      "image": "Charger"
+      "image": "charger"
     },
     {
       "id": 3,
       "name": "JBL Bluetooth speaker.",
       "description": "JBL Portable Waterproof Bluetooth speaker.",
       "price": 129.99,
-      "image": "image: Speaker"
+      "image": "speaker"
     },
     {
       "id": 4,
       "name": "MacBook Air",
       "description": "15 inch MacBook Air",
       "price": 1449.99,
-      "image": "MacBook"
+      "image": "macbook"
     },
     {
       "id": 5,
       "name": "IPad",
       "description": "With a 10.9-inch liquid retina display and four new bold colors",
       "price": 599.99,
-      "image": "IPad"
+      "image": "ipad"
     },
     {
       "id": 6,
       "name": "Samsung TV",
       "description": "Samsung 55inch 4K Led smart TV",
       "price": 599.99,
-      "image": "TV"
+      "image": "tv"
     }
   ],
   "cart": [

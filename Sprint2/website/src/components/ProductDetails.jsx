@@ -14,7 +14,7 @@ const ProductDetails = () => {
   useEffect(() => {
     const fetchProduct = async () => {
       const res = await fetch(`http://localhost:5000/products/${params.id}`);
-      if (res.status !== 200) {
+      if (res.status === 404) {
         navigate("/");
       }
       const data = await res.json();
@@ -34,9 +34,8 @@ const ProductDetails = () => {
   ) : (
     <div className="product-details">
       <p>{pathname}</p>
-      <h3>{product.price}</h3>
-      <p>{product.description}</p>
-      {/* <p>{product.warranty.toString()}</p> */}
+      <h3>{product.description}</h3>
+      <p>{product.price}</p>
       <Button
         text="Go Back"
         color="lightblue"

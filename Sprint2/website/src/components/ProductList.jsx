@@ -1,5 +1,7 @@
 // import Product from "./Product";
 import Button from "./Button";
+// import ipad from "../images/IPad.jpeg";
+import picture from "../images/logos.jpeg";
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
@@ -26,9 +28,14 @@ const ProductList = () => {
       {products.map((product) => (
         <div class="product" key={product.id}>
           <h3>{product.name}</h3>
+          <br />
           <p>{product.description}</p>
           <p>${product.price}</p>
-          <Link to={`/products/${products.id}`}>View Details</Link>
+
+          <img src={picture} alt={product.image} class={"listimages"} />
+          <br />
+          {/* <Link to={`/productdetails/${products.id}`}>View Details</Link> */}
+          <Link to="/productdetails">View Details</Link>
           <Button product={product} />
         </div>
       ))}

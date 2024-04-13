@@ -2,39 +2,45 @@
   "products": [
     {
       "id": 1,
-      "name": "Product 1",
-      "description": "Description of Product 1",
-      "price": 10
+      "name": "Apple Airpod Max",
+      "description": "2022 Apple Airpod Max Noise Cancelling Bluetooth headphones.",
+      "price": 299.99,
+      "image": "Headphones"
     },
     {
       "id": 2,
-      "name": "Product 2",
-      "description": "Description of Product 2",
-      "price": 20
+      "name": "USB MacBook Charger",
+      "description": "Apple USB MacBook charger, 8ft 96W.",
+      "price": 30.99,
+      "image": "Charger"
     },
     {
       "id": 3,
-      "name": "Product 3",
-      "description": "Description of Product 3",
-      "price": 30
+      "name": "JBL Bluetooth speaker.",
+      "description": "JBL Portable Waterproof Bluetooth speaker.",
+      "price": 129.99,
+      "image": "image: Speaker"
     },
     {
       "id": 4,
-      "name": "Product 4",
-      "description": "Description of Product 1",
-      "price": 10
+      "name": "MacBook Air",
+      "description": "15 inch MacBook Air",
+      "price": 1449.99,
+      "image": "MacBook"
     },
     {
       "id": 5,
-      "name": "Product 5",
-      "description": "Description of Product 2",
-      "price": 20
+      "name": "IPad",
+      "description": "With a 10.9-inch liquid retina display and four new bold colors",
+      "price": 599.99,
+      "image": "IPad"
     },
     {
       "id": 6,
-      "name": "Product 6",
-      "description": "Description of Product 3",
-      "price": 30
+      "name": "Samsung TV",
+      "description": "Samsung 55inch 4K Led smart TV",
+      "price": 599.99,
+      "image": "TV"
     }
   ],
   "cart": [

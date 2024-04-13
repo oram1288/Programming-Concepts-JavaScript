@@ -45,25 +45,11 @@
   ],
   "cart": [
     {
-      "id": "1",
-      "name": "Apple Airpod Max",
-      "description": "2022 Apple Airpod Max Noise Cancelling Bluetooth headphones.",
-      "price": 299.99,
-      "image": "headphones"
-    },
-    {
-      "id": "3",
-      "name": "JBL Bluetooth speaker.",
-      "description": "JBL Portable Waterproof Bluetooth speaker.",
-      "price": 129.99,
-      "image": "speaker"
-    },
-    {
-      "id": "6",
-      "name": "Samsung TV",
-      "description": "Samsung 55inch 4K Led smart TV",
-      "price": 599.99,
-      "image": "tv"
+      "id": "4",
+      "name": "MacBook Air",
+      "description": "15 inch MacBook Air",
+      "price": 1449.99,
+      "image": "macbook"
     }
   ]
 }

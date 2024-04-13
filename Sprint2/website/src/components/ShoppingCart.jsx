@@ -1,8 +1,3 @@
-// import React from "react";
-// import Button from "./Button";
-// import Product from "./Product";
-// import ProductList from "./ProductList";
-
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 
@@ -35,22 +30,26 @@ const ShoppingCart = () => {
     <>
       <h2>Shoppping Cart</h2>
       <div class="product">
-        {cart.map((product) => (
-          <div>
+        {cart.map((cart) => (
+          <div class="product-cart">
             {" "}
-            <p key={product.id}>
-              {product.name} - ${product.price}
+            <p key={cart.id}>
+              {cart.name} - ${cart.price}
             </p>
-            <button className="btn" onClick={() => deleteCart(product.id)}>
+            <button className="btn" onClick={() => deleteCart(cart.id)}>
               Remove
             </button>
           </div>
         ))}
       </div>
-      <br />
+      {/* <br /> */}
       <Link class="btn" to="/checkout">
         Check Out
       </Link>
+      <br />
+      <a class="btn2" href="/productlist">
+        Go Back
+      </a>
       <br />
 
       {/* <a class="btn" href="/checkout">

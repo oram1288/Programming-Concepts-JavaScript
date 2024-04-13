@@ -36,7 +36,7 @@ const ProductDetails = () => {
       <p>{pathname}</p>
       <h3>{product.price}</h3>
       <p>{product.description}</p>
-      <p>{product.warranty.toString()}</p>
+      {/* <p>{product.warranty.toString()}</p> */}
       <Button
         text="Go Back"
         color="lightblue"

@@ -45,14 +45,14 @@ const ProductList = () => {
             View Details
           </Link>
           {/* <br /> */}
-          {/* <Link to="/products">View Details</Link> */}
           <Button product={product} />
         </div>
       ))}
       <br />
-      <a class="btn" href="/shoppingcart">
+
+      <Link class="btn" to="/shoppingcart">
         Shopping Cart
-      </a>
+      </Link>
       <br />
     </>
   );

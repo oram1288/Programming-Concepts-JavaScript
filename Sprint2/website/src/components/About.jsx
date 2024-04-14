@@ -1,6 +1,8 @@
 import picture from "../images/Spark.png";
 
-const About = ({ onAdd }) => {
+import { Link } from "react-router-dom";
+
+const About = () => {
   return (
     <div>
       <img src={picture} alt="" class="pic"></img>
@@ -15,9 +17,9 @@ const About = ({ onAdd }) => {
         Click the Button below to view all of our products!{" "}
       </p>
       <br />
-      <a class="btn" href="/productlist">
+      <Link class="btn" to="/productlist">
         Product List
-      </a>
+      </Link>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import { Link } from "react-router-dom";
+
 const CheckOut = ({ onAdd }) => {
   let [number, setNumber] = useState("");
   let [date, setDate] = useState("");
@@ -68,9 +70,9 @@ const CheckOut = ({ onAdd }) => {
         />
       </form>
 
-      <a class="btn2" href="/shoppingcart">
+      <Link class="btn2" to="/shoppingcart">
         Go Back
-      </a>
+      </Link>
     </div>
   );
 };

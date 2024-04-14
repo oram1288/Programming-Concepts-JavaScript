@@ -46,9 +46,9 @@ const ShoppingCart = () => {
         Check Out
       </Link>
       <br />
-      <a class="btn2" href="/productlist">
+      <Link class="btn2" to="/productlist">
         Go Back
-      </a>
+      </Link>
       <br />
     </>
   );

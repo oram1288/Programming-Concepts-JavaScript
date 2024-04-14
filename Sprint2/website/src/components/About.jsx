@@ -1,4 +1,3 @@
-// import Button from "./Button";
 import picture from "../images/Spark.png";
 
 const About = ({ onAdd }) => {
@@ -19,7 +18,6 @@ const About = ({ onAdd }) => {
       <a class="btn" href="/productlist">
         Product List
       </a>
-      {/* <Button text="Product List" color="navy" onClick={onAdd} /> */}
     </div>
   );
 };

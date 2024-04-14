@@ -4,7 +4,7 @@ import Button from "./Button";
 
 const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
-  const [product, setProduct] = useState({});
+  const [products, setProduct] = useState({});
   // const [error, setError] = useState(null);
 
   const params = useParams();
@@ -13,7 +13,7 @@ const ProductDetails = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
-      const res = await fetch(`http://localhost:5000/productlist/${params.id}`);
+      const res = await fetch(`http://localhost:5000/product/${params.id}`);
       if (res.status !== 200) {
         navigate("/");
       }
@@ -34,8 +34,8 @@ const ProductDetails = () => {
   ) : (
     <div className="product-details">
       <p>{pathname}</p>
-      <h3>{product.description}</h3>
-      <p>{product.price}</p>
+      <h3>{products.description}</h3>
+      <p>{products.price}</p>
       <Button
         text="Go Back"
         color="lightblue"

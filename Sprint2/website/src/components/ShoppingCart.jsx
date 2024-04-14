@@ -42,7 +42,6 @@ const ShoppingCart = () => {
           </div>
         ))}
       </div>
-      {/* <br /> */}
       <Link class="btn" to="/checkout">
         Check Out
       </Link>
@@ -51,10 +50,6 @@ const ShoppingCart = () => {
         Go Back
       </a>
       <br />
-
-      {/* <a class="btn" href="/checkout">
-        Check Out
-      </a> */}
     </>
   );
 };

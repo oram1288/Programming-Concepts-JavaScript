@@ -1,4 +1,3 @@
-// import Product from "./Product";
 import Button from "./Button";
 // import ipad from "../images/IPad.jpeg";
 import picture from "../images/logos.jpeg";
@@ -34,8 +33,10 @@ const ProductList = () => {
 
           <img src={picture} alt={product.image} class={"listimages"} />
           <br />
-          {/* <Link to={`/productdetails/${products.id}`}>View Details</Link> */}
-          <Link to="/productdetails">View Details</Link>
+          <Link to={`/products/${products.id}`} class="btn3">
+            View Details
+          </Link>
+          {/* <Link to="/products">View Details</Link> */}
           <Button product={product} />
         </div>
       ))}

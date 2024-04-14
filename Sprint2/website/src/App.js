@@ -7,8 +7,6 @@ import ShoppingCart from "./components/ShoppingCart";
 import CheckOut from "./components/CheckOut";
 import ProductDetails from "./components/ProductDetails";
 
-// import { useState } from "react";
-
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {

@@ -21,7 +21,7 @@ function App() {
           <Routes>
             {/* <Route path="/about" element={<About />} /> */}
             {/* <Route
-              path="/productlist"
+              path="/shoppingcart"
               element={
                 products.length > 0 ? (
                   <ShoppingCart

@@ -20,6 +20,12 @@ const CheckOut = ({ onAdd }) => {
     setCCV("");
   };
 
+  // function clearFields() {
+  //   document.getElementById("card number").value = "";
+  //   document.getElementById("expiry date").value = "";
+  //   document.getElementById("ccv").value = "";
+  // }
+
   return (
     <div>
       <form className="add-form" onSubmit={onSubmit}>
@@ -54,7 +60,12 @@ const CheckOut = ({ onAdd }) => {
           />
         </div>
 
-        <input type="submit" value="Confirm" className="btn" />
+        <input
+          type="submit"
+          value="Confirm"
+          className="btn"
+          onSubmit={onSubmit}
+        />
       </form>
 
       <a class="btn2" href="/shoppingcart">

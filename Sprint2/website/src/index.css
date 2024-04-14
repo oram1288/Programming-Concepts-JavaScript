@@ -103,7 +103,7 @@ header {
 }
 
 .listimages {
-  width: 100px;
+  width: 120px;
   height: auto;
 }
 
@@ -137,9 +137,9 @@ header {
 
 .form-control input {
   /* max-width: 500px auto; */
-  width: 500px;
+  width: 550px;
   height: 40px;
-  margin: 5px;
+  margin: 5px 70px;
   padding: 3px 10px;
   font-size: 17px;
 }

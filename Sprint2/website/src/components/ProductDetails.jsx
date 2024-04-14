@@ -6,7 +6,7 @@ import { IoPricetag } from "react-icons/io5";
 
 const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
-  const [products, setProduct] = useState({});
+  const [product, setProduct] = useState({});
   // const [error, setError] = useState(null);
 
   const params = useParams();
@@ -38,11 +38,11 @@ const ProductDetails = () => {
       <p>{pathname}</p>
       <p>
         <MdDescription style={{ color: "white", margin: "5px" }} />
-        {products.description}
+        {product.description}
       </p>
       <p>
         <IoPricetag style={{ color: "white", margin: "5px" }} />
-        {products.price}
+        {product.price}
       </p>
       <Button
         text="Go Back"

@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import Button from "./Button";
+import { MdDescription } from "react-icons/md";
+import { IoPricetag } from "react-icons/io5";
 
 const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
@@ -34,8 +36,14 @@ const ProductDetails = () => {
   ) : (
     <div className="product-details">
       <p>{pathname}</p>
-      <h3>{products.description}</h3>
-      <p>{products.price}</p>
+      <p>
+        <MdDescription style={{ color: "white", margin: "5px" }} />
+        {products.description}
+      </p>
+      <p>
+        <IoPricetag style={{ color: "white", margin: "5px" }} />
+        {products.price}
+      </p>
       <Button
         text="Go Back"
         color="lightblue"

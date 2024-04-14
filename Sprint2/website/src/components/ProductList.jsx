@@ -1,4 +1,6 @@
 import Button from "./Button";
+import { MdDescription } from "react-icons/md";
+import { IoPricetag } from "react-icons/io5";
 // import ipad from "../images/IPad.jpeg";
 import picture from "../images/logos.jpeg";
 
@@ -27,9 +29,15 @@ const ProductList = () => {
       {products.map((product) => (
         <div class="product" key={product.id}>
           <h3>{product.name}</h3>
-          <br />
-          <p>{product.description}</p>
-          <p>${product.price}</p>
+          {/* <br /> */}
+          <p>
+            <MdDescription style={{ color: "white", margin: "5px" }} />
+            {product.description}
+          </p>
+          <p>
+            <IoPricetag style={{ color: "white", margin: "5px" }} />$
+            {product.price}
+          </p>
 
           <img src={picture} alt={product.image} class={"listimages"} />
           <br />

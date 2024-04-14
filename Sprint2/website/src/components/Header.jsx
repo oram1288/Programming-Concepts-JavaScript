@@ -4,7 +4,7 @@ function Header({ title }) {
   return (
     <header>
       <h1>{title}!</h1>
-      <p>Electronic Superstore</p>
+      <h3>Electronic Superstore</h3>
     </header>
   );
 }

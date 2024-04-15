@@ -1,0 +1,17 @@
+In this sprint me and Reagan started off by doing a rough figma
+design together and then started with our react project.
+
+I had the main react project on my computer so we would send
+code back and forth to each other sharing out the work between us, 
+including jsx files, funtion and also the testing files.
+
+When we got to the end of the deadline I finalized the React project
+while Reagan finished up anything else that needed to be added to our
+figma design.
+
+Couldn't get the ProductDetails.jsx to work for whatever reason, the 
+code for it is there, i'm sure it something small im doing wrong and 
+just not noticing, and the checkout confirm button gets and error just 
+because i wasn't sure what to exacting do with it.
+
+Hope you like the Project and Portfolio's, Thanks for the great semester!!

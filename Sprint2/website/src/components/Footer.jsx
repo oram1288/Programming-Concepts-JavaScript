@@ -7,7 +7,7 @@ const Footer = () => {
         Home
       </Link>
       <br />
-      <p>&copy; {new Date().getFullYear()} "Website Name"</p>
+      <p>&copy; {new Date().getFullYear()} Sparks Electronics</p>
     </footer>
   );
 };

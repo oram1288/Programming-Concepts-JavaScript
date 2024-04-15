@@ -45,11 +45,11 @@
   ],
   "cart": [
     {
-      "id": "3",
-      "name": "JBL Bluetooth speaker.",
-      "description": "JBL Portable Waterproof Bluetooth speaker.",
-      "price": 129.99,
-      "image": "speaker"
+      "id": "1",
+      "name": "Apple Airpod Max",
+      "description": "2022 Apple Airpod Max Noise Cancelling Bluetooth headphones.",
+      "price": 299.99,
+      "image": "headphones"
     }
   ]
 }

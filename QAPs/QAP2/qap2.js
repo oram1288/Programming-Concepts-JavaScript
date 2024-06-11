@@ -216,6 +216,7 @@ function toDateString(value) {
     let year = value.getFullYear();
     let month = `${value.getMonth() + 1}`.padStart(2, "0");
     let day = `${value.getDate()}`.padStart(2, "0");
+
     return `${year}-${month}-${day}`;
   } catch (err) {
     throw new Error("invalid date");
